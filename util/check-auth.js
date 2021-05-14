@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server');
 
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = require('../config');
+//const { SECRET_KEY } = require('../config');
 
 
 // jwt token is created by signing of {userid, username and email}, so after verify() we can get back the obj
