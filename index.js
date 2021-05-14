@@ -7,7 +7,7 @@ const resolvers = require('./GraphQL/resolvers');
 const { MONGODB } = require('./config.js');
 
 
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 
 //we just take the req in object and forward to our context
 
