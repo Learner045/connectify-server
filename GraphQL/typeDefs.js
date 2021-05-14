@@ -1,0 +1,59 @@
+const gql = require('graphql-tag');
+
+//RegisterInput is an input to a resolver and hence, we declare it with type input
+
+//GraphQL involves - Query, Mutation and Subscription,  query is to query the db, mutation is to put,pose,del
+// subscription is for real time updates
+
+//register involves mutation as it is post request to the db
+
+module.exports = gql`
+type Post{
+    id: ID!
+    body:String!
+    createdAt:String!
+    username: String!
+    comments: [Comment]!
+    likes: [Like]!
+    likeCount: Int!
+    commentCount: Int!
+}
+type Comment {
+    id: ID!
+    createdAt: String!
+    username: String!
+    body: String!
+  }
+  type Like {
+    id: ID!
+    createdAt: String!
+    username: String!
+  }
+input RegisterInput{
+    username:String!
+    password:String!
+    confirmPassword:String!
+    email:String!
+}
+type User{
+    id:ID!
+    email:String!
+    token:String!
+    username:String!
+    createdAt:String!
+}
+type Query{
+    getPosts: [Post]
+    getPost(postId: ID!): Post
+}
+type Mutation{
+    register(registerInput: RegisterInput): User!
+    login(username: String!, password: String!): User!
+    createPost(body: String!): Post!
+    deletePost(postId: ID!): String!
+    createComment(postId:ID!, body:String!):Post!
+    deleteComment(postId:ID!, commentId:ID!): Post!
+    likePost(postId:ID!):Post!
+}
+`;
+
